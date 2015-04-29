@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <script>
+      function obtainAccessToken() {
+          var fbCode = location.href.split('code=')[1];
+          localStorage.setItem('ls.code', fbCode);
+          // window.close();
+      }
+  </script>
+  <body onload="obtainAccessToken()">
+    This is just a hack for getting the access token when using a desktop browser.
+  </body>
+</html>
