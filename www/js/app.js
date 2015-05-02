@@ -31,7 +31,7 @@ angular.module('Trendicity', [
       StatusBar.styleDefault();
     }
 
-    BackendService.authCheck();
+    // BackendService.authCheck();
   });
 })
 
@@ -44,11 +44,11 @@ angular.module('Trendicity', [
   openFB.init({appId: '529868813818134'});
 
   $stateProvider
-    .state('app', {
-      url: '/app',
+    .state('base', {
+      url: "/base",
       abstract: true,
-      templateUrl: 'templates/menu.html',
-      controller: 'AppCtrl'
+      templateUrl: "templates/base.html",
+      controller: 'BaseCtrl'
     })
 
     .state('auth', {
@@ -68,27 +68,7 @@ angular.module('Trendicity', [
       }
     })
 
-    .state('app.intro', {
-      url: '/intro',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/intro.html',
-          controller: 'IntroCtrl'
-        }
-      }
-    })
-
-    .state('app.favorites', {
-      url: '/favorites',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/favorites.html',
-          controller: 'FavoritesCtrl'
-        }
-      }
-    })
-
-    .state('app.home', {
+    .state('base.home', {
       url: '/home',
       abstract: true,
       views: {
@@ -99,69 +79,67 @@ angular.module('Trendicity', [
       }
     })
 
-    .state('app.home.food', {
-      url: '/food',
-      views: {
-        'tab-food': {
-          templateUrl: 'templates/tab-food.html',
+    .state('base.home.food', {
+      url: "/food",
+      // views: {
+        // 'tab-food' :{
+          templateUrl: "templates/tab-food.html",
           controller: 'FoodCtrl'
-        }
-      }
+        // }
+      // }
     })
 
-    .state('app.home.business', {
+    .state('base.home.business', {
       url: '/business',
-      views: {
-        'tab-business': {
+      // views: {
+        // 'tab-business': {
           templateUrl: 'templates/tab-business.html',
           controller: 'BusinessCtrl'
-        }
-      }
-    })
+        // }
+      // }
+    });
 
-    // .state('app.home.map', {
-    //   url: '/map/?latitude&longitude',
+    // .state('app', {
+    //   url: '/app',
+    //   abstract: true,
+    //   templateUrl: 'templates/menu.html',
+    //   controller: 'AppCtrl'
+    // })
+
+
+    // .state('app.intro', {
+    //   url: '/intro',
     //   views: {
-    //     'tab-map': {
-    //       templateUrl: 'templates/tab-map.html',
-    //       controller: 'MapViewCtrl as mapCtrl'
+    //     'menuContent': {
+    //       templateUrl: 'templates/intro.html',
+    //       controller: 'IntroCtrl'
     //     }
     //   }
     // })
 
-    // .state('app.home.card', {
-    //   url: '/card',
+    // .state('app.favorites', {
+    //   url: '/favorites',
     //   views: {
-    //     'tab-card': {
-    //       templateUrl: 'templates/tab-card.html',
-    //       controller: 'CardViewCtrl'
+    //     'menuContent': {
+    //       templateUrl: 'templates/favorites.html',
+    //       controller: 'FavoritesCtrl'
     //     }
     //   }
     // })
 
-    // .state('app.home.list', {
-    //   url: '/list',
+    // .state('app.callback', {
+    //   url: '/callback',
     //   views: {
-    //     'tab-list': {
+    //     'tab-meh': {
     //       templateUrl: 'templates/tab-list.html',
     //       controller: 'ListViewCtrl'
     //     }
     //   }
-    // })
-
-    .state('app.callback', {
-      url: '/callback',
-      views: {
-        'tab-meh': {
-          templateUrl: 'templates/tab-list.html',
-          controller: 'ListViewCtrl'
-        }
-      }
-    });
+    // });
 
     // if none of the above states are matched, use this as the fallback
     console.log('go!');
-    $urlRouterProvider.otherwise('/app/home/food');
+    $urlRouterProvider.otherwise('/base/home/food');
 
   authProvider.init({
     domain: 'http://localhost:8100',

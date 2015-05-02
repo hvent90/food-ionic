@@ -12,12 +12,20 @@ angular.module('Trendicity')
   $ionicLoading,
   BackendService,
   localStorageService) {
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+
   console.log('we in da food controlla');
-  // $scope.foods = BackendService.getFoodIndex();
-  // $q.all(BackendService.getFoodIndex()).then(function(result) {
-  //   console.log('HERE WE GOOO', JSON.stringify(result));
-  //   $scope.foods = result;
-  // });
   var firstTimeFoods = 0;
   if (firstTimeFoods == 0) {
     $scope.foods = [];
@@ -27,13 +35,18 @@ angular.module('Trendicity')
   BackendService.getFoodIndex().then(
     function(data) {
       $scope.foods = data;
-      // console.log($scope.foods[1]);
     },
     function(data) {
       console.log('we hit a problem here cap');
     });
 
   $scope.submitFood = function(name) {
+    if (!name) {
+      console.log('dere was no food');
+      return;
+    }
+
+    console.log('DA FOOD NAME for submission IS '+name);
     BackendService.submitFood(name).then(
       function(data) {
         $scope.foods = data;

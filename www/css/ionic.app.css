@@ -7601,3 +7601,33 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+#login {
+  background-color: #fb9321; }
+  #login h3 {
+    color: white; }
+  #login .facebook-button {
+    color: white;
+    border-color: white; }
+    #login .facebook-button:active {
+      background-color: #43609C !important; }
+  #login .loader {
+    text-align: center;
+    margin-top: 20%; }
+    #login .loader .loader-inner {
+      display: block;
+      width: 100%; }
+
+.business-title {
+  padding-top: 2vh;
+  height: 15vh;
+  text-align: center; }
+
+.business-item {
+  padding-top: 15vh; }
+
+.business-status {
+  display: block;
+  font-size: 6em !important; }
+  .business-status a:before {
+    font-size: 6em !important; }

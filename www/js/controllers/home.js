@@ -61,6 +61,10 @@ angular.module('Trendicity')
     //   $ionicScrollDelegate.scrollTop();
     // };
 
+    $scope.goToFood = function() {
+      $state.go('base.home.food');
+    };
+
     $scope.$watch('search.value', function(newValue) {
         // Triggered when user changes search value
         // $scope.updatePosts(newValue);

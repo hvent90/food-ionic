@@ -1,0 +1,26 @@
+#login {
+	background-color: #fb9321;
+
+	h3 {
+		color: white;
+	}
+
+	.facebook-button {
+		color: white;
+		border-color: white;
+
+		&:active {
+			background-color: #43609C !important;
+		}
+	}
+
+	.loader {
+		text-align: center;
+		margin-top: 20%;
+
+		.loader-inner {
+			display: block;
+			width: 100%;
+		}
+	}
+}

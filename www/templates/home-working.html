@@ -1,0 +1,20 @@
+<ion-view title="Home">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <button class="button button-icon icon ion-fork" ui-sref="base.home.food"></button>
+      <button class="button button-icon icon ion-ios-briefcase" ui-sref="base.home.business"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-tabs class="tabs-top tabs-icons-only">
+    <ion-tab icon="icon ion-fork" ui-sref="base.home.food">
+      <!-- .state('base.home.food',...) invokes this view -->
+      <ion-nav-view name="tab-food"></ion-nav-view>
+    </ion-tab>
+    <ion-tab icon="icon ion-ios-briefcase" ui-sref="base.home.business">
+      <!-- .state('base.home.food',...) invokes this view -->
+      <ion-nav-view name="tab-business"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>

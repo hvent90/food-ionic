@@ -30,8 +30,6 @@ angular.module('Trendicity')
   this.authCheck = function() {
     var token = window.localStorage['auth_token'];
     console.log('Auth check for token: '+ token);
-    // self.loginWithBackend(window.localStorage['facebook_token']);
-    // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
     var response =  $http({
             method: 'POST',
             url: API_ENDPOINT + '/auth/check',
@@ -55,6 +53,38 @@ angular.module('Trendicity')
     );
   };
 
+  this.submitBusinessStatus = function(formData) {
+    var defer = $q.defer();
+    var token = window.localStorage['auth_token'];
+
+    formData.auth_token = token;
+
+    var response =  $http({
+            method: 'POST',
+            url: API_ENDPOINT + '/business?auth_token='+token,
+            headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+            data: formData
+    });
+
+    response.success(
+        function( data, status, headers, config ) {
+          console.log('successful submission of business');
+          defer.resolve(JSON.parse(JSON.stringify(data)));
+        }
+    );
+    response.error(
+        function( data, status, headers, config ) {
+         console.log('failed food index');
+         $state.go('auth.login');
+         console.log(JSON.stringify(data));
+         console.log(JSON.stringify(status));
+         console.log(JSON.stringify(headers));
+        }
+    );
+
+    return defer.promise;
+  }
+
   this.getFoodIndex = function() {
     var defer = $q.defer();
     var token = window.localStorage['auth_token'];
@@ -73,6 +103,7 @@ angular.module('Trendicity')
     response.error(
         function( data, status, headers, config ) {
          console.log('failed food index');
+         $state.go('auth.login');
          console.log(JSON.stringify(data));
          console.log(JSON.stringify(status));
          console.log(JSON.stringify(headers));
@@ -149,7 +180,7 @@ angular.module('Trendicity')
           console.log('Successful login. Auth token: '+ window.localStorage['auth_token']);
           console.log('go to food!');
           $ionicLoading.hide();
-          $state.go('app.home.food');
+          $state.go('base.home.food');
         }
     );
 

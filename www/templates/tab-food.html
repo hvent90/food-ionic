@@ -1,17 +1,78 @@
-<ion-view title="" cache-view="false">
+<!-- <ion-view title="Food">
+<ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <button class="button button-icon icon ion-fork" ui-sref="base.home.food"></button>
+      <button class="button button-icon icon ion-ios-briefcase" ui-sref="base.home.business"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-content class="has-header">
     <ion-list>
-        <div class="item item-input-inset" style="padding: 0;">
-            <label class="item-input-wrapper" style="border-radius: 0;">
-                <input type="text" ng-model="query" placeholder="What did you eat?" style="height: 40px;">
-            </label>
-            <button ng-click="submitFood(query)" style="padding-right: 15px" class="button button-small button-clear button-positive">
-            +
-            </button>
-        </div>
-        <button ng-click="$parent.submitFood(food.name)" class="button button-block" collection-repeat="food in foods | filter:query">
-            {{food.name}}
-        </button>
+      <ion-item collection-repeat="food in foods" ng-click="submitFood(food.name)">
+        {{food.name}}
+      </ion-item>
     </ion-list>
+  </ion-content>
+</ion-view> -->
+<ion-view id="intro" ng-class="{ 'slide-center': slideIndex == 1, 'slide-right': slideIndex == 2 }" hide-back-button="true" cache-view="false">
+  <ion-nav-bar>
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <button class="button button-icon icon ion-fork" ng-click="previous()"></button>
+      <button class="button button-icon icon ion-ios-briefcase" ng-click="next()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-slide-box class="slide-box-positive" on-slide-changed="slideChanged(index)">
+      <ion-slide ng-controller="FoodCtrl" class="vertical-center-container">
+          <ion-list>
+            <div style="margin: 0; padding: 0;" class="item item-input-inset">
+              <label style="margin: 0; padding: 0; border-radius: 0;" class="item-input-wrapper">
+                <input
+                  style="padding-left: 10px; margin: 0; border-radius: 0; height: 40px;"
+                  type="text"
+                  placeholder="What did you eat?"
+                  ng-model="foodToSubmit">
+              </label>
+              <button
+                style="padding: 0; height: 40px; width: 15%; margin: 0; border-radius: 0; background-color: #A8ED80; border-color: #A8ED80"
+                ng-click="submitFood(foodToSubmit)"
+                class="button button-small">
+                +
+              </button>
+            </div>
+            <ion-item
+              ng-repeat="food in foods | filter:foodToSubmit"
+              ng-click="submitFood(food.name)">
+              {{food.name}}
+            </ion-item>
+          </ion-list>
+      </ion-slide>
+
+      <ion-slide ng-controller="BusinessCtrl" class="vertical-center-container">
+        <div class="business-title">
+          <div style="text-align: center" class="">
+            <i style="display: block; font-size: 4em" class="icon ion-ios-briefcase"></i>
+          </div>
+          <h1 class="title">How was it?</h1>
+        </div>
+        <div class="business-status">
+          <div style="text-align: center" class="business-item">
+            <a
+              style="display: block;"
+              ng-click="submitBusinessStatus('happy')"
+              class="button button-icon icon ion-happy-outline">
+            </a>
+          </div>
+          <div style="text-align: center" class="business-item">
+            <a
+              style="display: block;"
+              ng-click=""
+              class="button button-icon icon ion-sad-outline">
+            </a>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
   </ion-content>
 </ion-view>

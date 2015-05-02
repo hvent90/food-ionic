@@ -1,0 +1,29 @@
+ <ion-side-menus>
+ 	<!-- Main body of the Application -->
+ 	<ion-side-menu-content>
+ 		<!-- Header. Child views' <ion-nav-bar> elements will automagically be placed here -->
+ 		<ion-nav-bar class="bar-stable nav-title-slide-ios7">
+ 			<ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+ 		</ion-nav-bar>
+
+ 		<!-- .state('base.home',...) invokes this view -->
+	    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+ 	</ion-side-menu-content>
+
+ 	<!-- Left Side Menu -->
+ 	<ion-side-menu side="left">
+ 		<!-- Header on the Side Menu -->
+	 	<header class="bar bar-header bar-stable">
+	      <h1 class="title">Left</h1>
+	    </header>
+
+	    <!--  -->
+	    <ion-content class="has-header">
+	    	<ion-list>
+	    		<ion-item nav-clear menu-close ng-click="logout()">
+	    			Logout
+	    		</ion-item>
+	    	</ion-list>
+	    </ion-content>
+ 	</ion-side-menu>
+ </ion-side-menus>
