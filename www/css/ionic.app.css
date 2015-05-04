@@ -7631,3 +7631,27 @@ a.button {
   font-size: 6em !important; }
   .business-status a:before {
     font-size: 6em !important; }
+
+#bad-business {
+  height: 100%; }
+  #bad-business ion-header-bar {
+    font-size: 2em; }
+  #bad-business .list {
+    margin-bottom: 0; }
+    #bad-business .list .item {
+      height: 50px; }
+      #bad-business .list .item.item-divider {
+        height: 40px; }
+  #bad-business .scroll {
+    height: 100%; }
+  #bad-business .pls {
+    background-color: #49C1FF !important;
+    text-align: center;
+    height: calc(100% - 260px) !important;
+    margin: 0; }
+    #bad-business .pls .submit-biz {
+      text-align: center;
+      display: block; }
+      #bad-business .pls .submit-biz h2 {
+        color: white;
+        font-weight: bold; }

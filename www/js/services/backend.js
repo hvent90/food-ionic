@@ -13,7 +13,8 @@ angular.module('Trendicity')
   var self = this;
 
   // if running in a desktop browswer we will proxy to: https://api.instagram.com/v1 in ionic.project to avoid CORS issues
-  var API_ENDPOINT = 'http://local.food.com';
+  // var API_ENDPOINT = 'http://local.food.com';
+  var API_ENDPOINT = 'http://food.hventura.com';
 
   console.log('API_ENDPOINT:' + API_ENDPOINT);
 
@@ -54,6 +55,7 @@ angular.module('Trendicity')
   };
 
   this.submitBusinessStatus = function(formData) {
+    $ionicLoading.show();
     var defer = $q.defer();
     var token = window.localStorage['auth_token'];
 
@@ -62,23 +64,28 @@ angular.module('Trendicity')
     var response =  $http({
             method: 'POST',
             url: API_ENDPOINT + '/business?auth_token='+token,
-            headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+            headers: {
+              'Content-Type' : 'application/x-www-form-urlencoded'
+              // 'Authorization': token
+            },
             data: formData
     });
 
     response.success(
         function( data, status, headers, config ) {
+          $ionicLoading.hide();
           console.log('successful submission of business');
+          console.log(data);
           defer.resolve(JSON.parse(JSON.stringify(data)));
         }
     );
     response.error(
         function( data, status, headers, config ) {
-         console.log('failed food index');
-         $state.go('auth.login');
-         console.log(JSON.stringify(data));
-         console.log(JSON.stringify(status));
-         console.log(JSON.stringify(headers));
+          $ionicLoading.hide();
+          console.log('failed business submission');
+          console.log(JSON.stringify(data));
+          console.log(JSON.stringify(status));
+          console.log(JSON.stringify(headers));
         }
     );
 
@@ -165,7 +172,8 @@ angular.module('Trendicity')
   };
 
   this.loginWithBackend = function(access_token) {
-    console.log(localStorageService.get('auth_token'));
+    // console.log(localStorageService.get('auth_token'));
+    console.log('FB Access token: ' + access_token);
     var response =  $http({
             method: 'POST',
             url: API_ENDPOINT + '/auth/facebook',

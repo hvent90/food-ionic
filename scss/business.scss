@@ -16,3 +16,43 @@
 		font-size: 6em !important
 	}
 }
+
+#bad-business {
+	height: 100%;
+
+	ion-header-bar {
+		font-size: 2em;
+	}
+
+	.list {
+		margin-bottom: 0;
+		.item {
+			height: 50px;
+
+			&.item-divider {
+				height: 40px;
+			}
+		}
+	}
+
+	.scroll {
+		height: 100%;
+	}
+
+	.pls {
+		background-color: #49C1FF !important;
+		text-align: center;
+		height: calc(100% - 260px) !important;
+		margin: 0;
+
+		.submit-biz {
+			text-align: center;
+			display: block;
+
+			h2 {
+				color: white;
+				font-weight: bold;
+			}
+		}
+	}
+}

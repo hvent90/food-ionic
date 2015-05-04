@@ -32,13 +32,15 @@ angular.module('Trendicity')
     firstTimeFoods = 1;
   }
 
-  BackendService.getFoodIndex().then(
-    function(data) {
-      $scope.foods = data;
-    },
-    function(data) {
-      console.log('we hit a problem here cap');
-    });
+  if (window.localStorage['auth_token']) {
+    BackendService.getFoodIndex().then(
+      function(data) {
+        $scope.foods = data;
+      },
+      function(data) {
+        console.log('we hit a problem here cap');
+      });
+  }
 
   $scope.submitFood = function(name) {
     if (!name) {

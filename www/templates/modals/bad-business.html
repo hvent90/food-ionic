@@ -1,0 +1,56 @@
+<ion-modal-view id="bad-business">
+	<ion-header-bar>
+		<i
+			class="icon ion-backspace-outline"
+			ng-click="closeModal()"></i>
+		<h1 class="title">Bad Business</h1>
+	</ion-header-bar>
+	<ion-content scroll="false">
+		<div class="list">
+		  <div class="item item-divider">
+		    Tomato Soup
+		  </div>
+
+		  <div class="item range range-positive">
+		    <i class="icon ion-ios-heart-outline"></i>
+		    <input ng-model="data.blood" type="range" name="blood" min="0" max="100" value="0">
+		    <i class="icon ion-ios-heart"></i>
+		  </div>
+
+		  <div class="item item-divider">
+		    Rear Lightning
+		  </div>
+		  <div class="item range range-positive">
+		    <i class="icon ion-ios-bolt-outline"></i>
+		    <input type="range" ng-model="data.pain" name="pain" min="0" max="100" value="0">
+		    <i class="icon ion-ios-bolt"></i>
+		  </div>
+
+		  <div class="item item-divider">
+		    Consistency
+		  </div>
+		  <div class="item range range-positive">
+		    <!-- <i class="icon ion-ios-bolt-outline"></i> -->
+		    soft
+		    <input type="range" ng-model="data.consistency" name="consistency" min="0" max="100" value="0">
+		    <!-- <i class="icon ion-ios-bolt"></i> -->
+		    hard
+		  </div>
+		</div>
+		<div class="pls row row-center">
+			<div ng-click="submitBusinessStatus()" class="row">
+				<div class="row submit-biz">
+					<h2>Submit</h2>
+				</div>
+				<div ng-click="" class="row">
+					<div ng-click="" class="loader-inner pacman">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>
