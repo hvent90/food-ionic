@@ -11,14 +11,19 @@ angular.module('Trendicity', [
   'auth0',
   'angular-storage',
   'angular-jwt',
-  'ion-autocomplete'
+  'ion-autocomplete',
+  'angles'
 ])
 
-.run(function($rootScope, $ionicPlatform, ENV, auth, BackendService) {
+.run(function($rootScope, $ionicPlatform, $state, ENV, auth, BackendService) {
   console.log('Environment:', ENV.name);
+  $rootScope.$state = $state;
+  $rootScope.foodRoute = 'forward';
+  $rootScope.businessRoute = 'forward';
+  $rootScope.exploreRoute = 'forward';
 
   // This hooks all auth events to check everything as soon as the app starts
-  auth.hookEvents();
+  // auth.hookEvents();
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -44,13 +49,6 @@ angular.module('Trendicity', [
   openFB.init({appId: '529868813818134'});
 
   $stateProvider
-    .state('base', {
-      url: "/base",
-      abstract: true,
-      templateUrl: "templates/base.html",
-      controller: 'BaseCtrl'
-    })
-
     .state('auth', {
       url: '/auth',
       abstract: true,
@@ -66,6 +64,13 @@ angular.module('Trendicity', [
           controller: 'AuthCtrl'
         }
       }
+    })
+
+    .state('base', {
+      url: "/base",
+      abstract: true,
+      templateUrl: "templates/base.html",
+      controller: 'BaseCtrl'
     })
 
     .state('base.home', {
@@ -95,6 +100,16 @@ angular.module('Trendicity', [
         // 'tab-business': {
           templateUrl: 'templates/tab-business.html',
           controller: 'BusinessCtrl'
+        // }
+      // }
+    })
+
+    .state('base.home.explore', {
+      url: '/explore',
+      // views: {
+        // 'tab-business': {
+          templateUrl: 'templates/tab-explore.html',
+          controller: 'ExploreCtrl'
         // }
       // }
     });

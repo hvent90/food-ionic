@@ -1,0 +1,34 @@
+<ion-view>
+  <ion-content >
+    <canvas
+    	chart="Line"
+    	responsive=true
+    	options="options"
+    	data="chart"
+        height="500"
+        ng-click="chartClick(event)"
+    	style="padding: 10px">
+    </canvas>
+
+    <ion-list>
+        <div class="card" ng-repeat="businessMeeting in businessMeetings | orderBy:'id':true">
+            <div class="item item-divider">
+                {{ businessMeeting.created_at }}
+            </div>
+          <div class="item item-text-wrap">
+            <i class="icon assertive ion-ios-heart"></i> {{ businessMeeting.blood }} <i class="icon energized ion-ios-bolt"></i> {{ businessMeeting.pain }} <i class="icon royal ion-leaf"></i> {{ businessMeeting.timeCleaning }} <i class="icon dark ion-ios-analytics"></i> {{ businessMeeting.consistency }}
+          </div>
+        </div>
+    	<!-- <ion-item ng-repeat="businessMeeting in businessMeetings | orderBy:'id':true">
+    		{{ businessMeeting.created_at }}: <i class="icon assertive ion-ios-heart"></i> {{ businessMeeting.blood }} <i class="icon energized ion-ios-bolt"></i> {{ businessMeeting.pain }} <i class="icon royal ion-leaf"></i> {{ businessMeeting.timeCleaning }} <i class="icon dark ion-ios-analytics"></i> {{ businessMeeting.consistency }}
+    	</ion-item> -->
+    </ion-list>
+    <ion-infinite-scroll
+        immediate-check="false"
+        ng-if="moreDataCanBeLoaded()"
+        icon="ion-loading-c"
+        on-infinite="loadMoreData()"
+        distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

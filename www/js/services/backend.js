@@ -54,12 +54,48 @@ angular.module('Trendicity')
     );
   };
 
-  this.submitBusinessStatus = function(formData) {
+  this.getBusinessIndex = function(nextPageUrl) {
     $ionicLoading.show();
     var defer = $q.defer();
     var token = window.localStorage['auth_token'];
 
+    if (nextPageUrl) {
+      var response =  $http({
+              method: 'GET',
+              url: nextPageUrl + '&auth_token=' + token
+      });
+    } else {
+      var response =  $http({
+              method: 'GET',
+              url: API_ENDPOINT + '/business/explore?auth_token='+token
+      });
+    }
+
+    response.success(
+        function( data, status, headers, config ) {
+          console.log('successful retrieval of explore index');
+          // console.log(JSON.stringify(data));
+          defer.resolve(JSON.parse(JSON.stringify(data)));
+        }
+    );
+    response.error(
+        function( data, status, headers, config ) {
+         console.log('failed explore index');
+         console.log(JSON.stringify(data));
+         console.log(JSON.stringify(status));
+         console.log(JSON.stringify(headers));
+        }
+    );
+
+    return defer.promise;
+  };
+
+  this.submitBusinessStatus = function(formData) {
+    $ionicLoading.show();
+    var defer = $q.defer();
+    var token = window.localStorage['auth_token'];
     formData.auth_token = token;
+    console.log(JSON.stringify(formData));
 
     var response =  $http({
             method: 'POST',

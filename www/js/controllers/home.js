@@ -14,13 +14,28 @@ angular.module('Trendicity')
   $rootScope,
   $scope,
   $state,
+  $ionicHistory,
   $ionicPopover,
   $ionicLoading,
   $ionicScrollDelegate,
+  $ionicViewSwitcher,
   InstagramService,
   PostsService,
   GeolocationService
 ) {
+
+  $scope.goToFood = function() {
+    $ionicHistory.clearCache();
+    $ionicViewSwitcher.nextDirection("backward");
+    $state.go("base.home.food");
+  };
+
+  $scope.goToBusiness = function() {
+    $ionicHistory.clearCache();
+    $ionicViewSwitcher.nextDirection("forward");
+    $state.go("base.home.business");
+  };
+
     $scope.model =  PostsService.getModel();
     $scope.search = { value: POST_TYPE.NEARBY};
 
@@ -102,5 +117,24 @@ angular.module('Trendicity')
         PostsService.clearCurrentPosts();
       }
     });
+
+    $scope.prepareDirection = function(destinationRoute) {
+      if (destinationRoute == 'foodRoute') {
+        console.log('went to food');
+        $rootScope.foodRoute = 'back';
+        $rootScope.businessRoute = 'forward';
+        $rootScope.exploreRoute = 'forward';
+      } else if (destinationRoute == 'businessRoute') {
+        console.log('went to biz');
+        $rootScope.foodRoute = 'back';
+        $rootScope.businessRoute = 'forward';
+        $rootScope.exploreRoute = 'forward';
+      } else if (destinationRoute == 'exploreRoute') {
+        console.log('went to explore');
+        $rootScope.foodRoute = 'back';
+        $rootScope.businessRoute = 'back';
+        $rootScope.exploreRoute = 'forward';
+      }
+    };
   }
 );

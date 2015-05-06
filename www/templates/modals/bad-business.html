@@ -8,34 +8,46 @@
 	<ion-content scroll="false">
 		<div class="list">
 		  <div class="item item-divider">
-		    Tomato Soup
+		    <i class="icon assertive ion-ios-heart"></i> Red Stuff
 		  </div>
 
-		  <div class="item range range-positive">
-		    <i class="icon ion-ios-heart-outline"></i>
+		  <div class="item range range-assertive">
+		    <i class="icon assertive ion-ios-heart-outline"></i>
 		    <input ng-model="data.blood" type="range" name="blood" min="0" max="100" value="0">
-		    <i class="icon ion-ios-heart"></i>
+		    <i class="icon assertive ion-ios-heart"></i>
 		  </div>
 
 		  <div class="item item-divider">
-		    Rear Lightning
+		    <i class="icon energized ion-ios-bolt"></i> Rear Lightning
 		  </div>
-		  <div class="item range range-positive">
-		    <i class="icon ion-ios-bolt-outline"></i>
+		  <div class="item range range-energized">
+		    <i class="icon energized ion-ios-bolt-outline"></i>
 		    <input type="range" ng-model="data.pain" name="pain" min="0" max="100" value="0">
-		    <i class="icon ion-ios-bolt"></i>
+		    <i class="icon energized ion-ios-bolt"></i>
 		  </div>
 
 		  <div class="item item-divider">
-		    Consistency
+		    <i class="icon royal ion-leaf"></i> Time Spent Cleaning
 		  </div>
-		  <div class="item range range-positive">
+		  <div class="item range range-royal">
+		    <!-- <i class="icon ion-ios-bolt-outline"></i> -->
+		    <span class="royal">short</span>
+		    <input type="range" ng-model="data.time_cleaning" name="time_cleaning" min="0" max="100" value="0">
+		    <!-- <i class="icon ion-ios-bolt"></i> -->
+		    <span class="royal">long</span>
+		  </div>
+
+		  <div class="item item-divider">
+		    <i class="icon dark ion-ios-analytics"></i> Consistency
+		  </div>
+		  <div class="item range range-dark">
 		    <!-- <i class="icon ion-ios-bolt-outline"></i> -->
 		    soft
 		    <input type="range" ng-model="data.consistency" name="consistency" min="0" max="100" value="0">
 		    <!-- <i class="icon ion-ios-bolt"></i> -->
 		    hard
 		  </div>
+
 		</div>
 		<div class="pls row row-center">
 			<div ng-click="submitBusinessStatus()" class="row">

@@ -2,8 +2,9 @@
   <ion-nav-bar>
     <ion-nav-buttons side="left">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <!-- <button class="button button-icon icon ion-fork" ui-sref="base.home.food"></button> -->
-      <!-- <button class="button button-icon icon ion-ios-briefcase" ui-sref="base.home.business"></button> -->
+      <button class="button button-icon icon ion-fork" ui-sref="base.home.food" ng-click="prepareDirection('foodRoute')" nav-direction="{{ foodRoute }}"></button>
+      <button class="button button-icon icon ion-ios-briefcase" ui-sref="base.home.business" ng-click="prepareDirection('businessRoute')" nav-direction="{{ businessRoute }}"></button>
+      <button class="button button-icon icon ion-arrow-graph-up-right" nav-direction="forward" ui-sref="base.home.explore" ng-click="prepareDirection('exploreRoute')" nav-direction="{{ exploreRoute }}"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
       <!-- .state('base.home.food',...) invokes this view -->

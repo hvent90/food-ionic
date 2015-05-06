@@ -14,9 +14,13 @@
     "auth0-angular": "3.*",
     "a0-angular-storage": ">= 0.0.6",
     "angular-jwt": ">= 0.0.4",
-    "ion-autocomplete": "~0.2.0"
+    "ion-autocomplete": "~0.2.0",
+    "angular-charts": "~0.2.7"
   },
   "resolutions": {
     "lodash": "~3.1.0"
+  },
+  "devDependencies": {
+    "angular-charts": "~0.2.7"
   }
 }

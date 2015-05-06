@@ -12,20 +12,30 @@ angular.module('Trendicity')
   $ionicLoading,
   $ionicModal,
   $ionicPopup,
+  $ionicViewSwitcher,
+  $rootScope,
   BackendService,
   localStorageService) {
   console.log('ITS BUSINESS TIME, cause we in da business controlla');
+
+  // $rootScope.foodRoute = 'back';
+  // $rootScope.exploreRoute = 'forward';
+  // console.log($rootScope.foodRoute);
+  // console.log($rootScope.businessRoute);
+  // console.log($rootScope.exploreRoute);
+
 
   $scope.data = {};
   $scope.data.blood = 0;
   $scope.data.pain = 0;
   $scope.data.consistency = 50;
-
+  $scope.data.time_cleaning = 50;
 
   $scope.submitBusinessStatus = function(input) {
     var data = {
       blood: $scope.data.blood,
       pain: $scope.data.pain,
+      time_cleaning: $scope.data.time_cleaning,
       consistency: $scope.data.consistency,
     };
 
