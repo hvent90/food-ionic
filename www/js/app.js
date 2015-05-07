@@ -88,7 +88,7 @@ angular.module('Trendicity', [
       url: "/food",
       // views: {
         // 'tab-food' :{
-          templateUrl: "templates/tab-food.html",
+          templateUrl: "templates/food.html",
           controller: 'FoodCtrl'
         // }
       // }
@@ -98,7 +98,7 @@ angular.module('Trendicity', [
       url: '/business',
       // views: {
         // 'tab-business': {
-          templateUrl: 'templates/tab-business.html',
+          templateUrl: 'templates/business.html',
           controller: 'BusinessCtrl'
         // }
       // }
@@ -108,7 +108,7 @@ angular.module('Trendicity', [
       url: '/explore',
       // views: {
         // 'tab-business': {
-          templateUrl: 'templates/tab-explore.html',
+          templateUrl: 'templates/explore.html',
           controller: 'ExploreCtrl'
         // }
       // }
